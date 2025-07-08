@@ -32,13 +32,27 @@ public class Payment {
     private LocalDateTime paidAt;
 
     public enum PaymentMethod {
-        CARD, UPI, COD
+        CARD, UPI, WALLET, COD
     }
 
     public enum PaymentStatus {
-        SUCCESS, FAILED
+        PENDING, SUCCESS, FAILED
+    }
+
+    // Helper method for validation
+    public boolean isValid() {
+        return orderId != null && paymentMethod != null && amount != null && amount.compareTo(BigDecimal.ZERO) > 0;
+    }
+
+    // Helper method to set initial status
+    public void setInitialStatus() {
+        this.status = PaymentStatus.PENDING;
     }
 
     // Getters and Setters
+    public Long getId() { return id; }
+    public Long getOrderId() { return orderId; }
+    public PaymentStatus getStatus() { return status; }
+    public void setStatus(PaymentStatus status) { this.status = status; }
 }
 
