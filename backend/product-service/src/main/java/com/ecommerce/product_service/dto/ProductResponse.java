@@ -1,37 +1,18 @@
+package com.ecommerce.product_service.dto;
 
-package com.ecommerce.product_service.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import lombok.Data;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "products")
-public class Product {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Data
+public class ProductResponse {
     private Long id;
-
     private String name;
     private String description;
-
-    @Column(nullable = false)
     private BigDecimal price;
-
-    @Column(unique = true)
     private String sku;
-
     private String category;
     private String imageUrl;
-
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     // Getters and Setters
 
@@ -89,21 +70,5 @@ public class Product {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }
