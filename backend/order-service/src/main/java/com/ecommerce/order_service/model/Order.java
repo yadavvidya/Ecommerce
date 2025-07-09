@@ -1,15 +1,22 @@
 package com.ecommerce.order_service.model;
 
 import jakarta.persistence.*;
+import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "orders")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long userId;
@@ -26,6 +33,4 @@ public class Order {
     public enum OrderStatus {
         PLACED, PAID, SHIPPED
     }
-
-    // Getters and Setters
 }

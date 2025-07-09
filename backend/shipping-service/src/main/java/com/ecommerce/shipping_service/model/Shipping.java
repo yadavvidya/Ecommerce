@@ -9,11 +9,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "shipping")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Shipping {
-
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -30,6 +37,4 @@ public class Shipping {
     public enum ShippingStatus {
         PENDING, SHIPPED, DELIVERED
     }
-
-    // Getters and Setters
 }
